@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.core.logging import setup_logging
 
+from app.routes.root import router as root_router
 from app.routes.health import router as health_router
 from app.routes.whatsapp import router as whatsapp_router
 from app.routes.leads import router as leads_router
@@ -16,6 +17,7 @@ logger = setup_logging()
 
 app = FastAPI(title=settings.app_name)
 
+app.include_router(root_router)
 app.include_router(health_router)
 app.include_router(whatsapp_router)
 app.include_router(leads_router)
