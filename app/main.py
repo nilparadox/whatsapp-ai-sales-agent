@@ -9,6 +9,7 @@ from app.routes.send import router as send_router
 from app.routes.admin import router as admin_router
 
 from app.db.init_db import init_db
+from app.core.seed import ensure_seed_files
 
 logger = setup_logging()
 
@@ -22,5 +23,6 @@ app.include_router(admin_router)
 
 @app.on_event("startup")
 def on_startup():
+    ensure_seed_files()
     init_db()
     logger.info(f"Starting {settings.app_name} | env={settings.env}")

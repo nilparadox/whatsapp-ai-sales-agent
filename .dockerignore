@@ -3,7 +3,5 @@ __pycache__
 *.pyc
 .DS_Store
 app.db
-data/*.csv
-data/*.json
 .env
 outputs
