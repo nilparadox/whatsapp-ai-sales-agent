@@ -17,3 +17,16 @@ class Lead(Base):
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
+
+class Message(Base):
+    __tablename__ = "messages"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    business_id = Column(String(64), index=True, nullable=False, default="default")
+    phone = Column(String(64), index=True, nullable=False)
+
+    role = Column(String(16), nullable=False)  # "user" | "assistant"
+    content = Column(Text, nullable=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
